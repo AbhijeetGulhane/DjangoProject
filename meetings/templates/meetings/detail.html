@@ -5,10 +5,13 @@
     <title>Meeting: {{meeting.title}}</title>
 </head>
 <body>
-    <h1>{{meeting.title}}</h1>
+    <a href="{% url 'home' %}">Home</a>
+    <h2>{{meeting.title}}</h2>
     <p>
         This meeting is scheduled on {{meeting.date}}, at
         {{meeting.start_time}} in <strong> {{meeting.room}}</strong>
     </p>
+
+
 </body>
 </html>

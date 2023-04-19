@@ -9,7 +9,7 @@ from meetings.models import Meeting
 def welcome(request):
     return render(request, "website/welcome.html",
                   {"username": "USER",
-                   "num_meetings": Meeting.objects.count()})
+                   "meetings": Meeting.objects.all()})
 
 
 def date(request):

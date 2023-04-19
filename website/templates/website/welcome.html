@@ -10,9 +10,20 @@
         This is demo application.<br>
         This is for meeting planner.
     </p>
-    <p>
-        There are currently {{ num_meetings }} meetings in the database.
-    </p>
+    <h2>Meetings</h2>
+    <ul>
+        {% for meeting in meetings %}
+        <li>
+            <!--- <a href="/meetings/{{meeting.id}}" > --->
+            <a href="{% url 'detail' meeting.id %}">
+                {{ meeting.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3> <a href="{% url 'rooms' %}">Room List </a> </h3>
+    <a href="{% url 'about' %}">About </a>
 
 </body>
 </html>
