@@ -22,4 +22,4 @@ class Meeting(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.title} at {self.start_time} on {self.date}"
+        return f"{self.title} at {self.start_time} on date {self.date}"
