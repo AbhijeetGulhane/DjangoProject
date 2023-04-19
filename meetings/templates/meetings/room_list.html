@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Room List</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Rooms{% endblock %}
+
+{% block content %}
+
+    <a href="{% url 'home' %}">Home</a>
     <h2>Rooms</h2>
     <ul>
         {% for room in rooms %}
@@ -15,5 +15,4 @@
         </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
