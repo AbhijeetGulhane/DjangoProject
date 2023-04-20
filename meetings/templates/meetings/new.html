@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}New Meeting{% endblock %}
+
+{% block content %}
+<h1>Plan a new Meeting</h1>
+<form method="post">
+  <table>
+    {{ form }} <!-- Django will generate a basic form for all the fields in the class whose object is passed from the view function -->
+  </table>
+  {% csrf_token %} <!-- needed to validate on django to pass the CSRF verification -->
+  <button type="submit">Create Meeting</button>
+</form>
+
+{% endblock %}
