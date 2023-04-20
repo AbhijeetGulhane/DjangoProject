@@ -5,22 +5,24 @@
 {% block content %}
     <h1>Welcome to meeting planner</h1>
     <p>
-        This is meeting planner.
+        <br><!-- This is meeting planner. -->
     </p>
-    <h2>Meetings</h2>
+    <h2>Scheduled Meetings </h2>
     <ul>
         {% for meeting in meetings %}
         <li>
-            <!--- <a href="/meetings/{{meeting.id}}" > --->
             <a href="{% url 'detail' meeting.id %}">
                 {{ meeting.title }}
             </a>
+            <!--- <a href="/meetings/{{meeting.id}}" > --->
         </li>
         {% endfor %}
     </ul>
-
-    <h3> <a href="{% url 'rooms' %}">Room List </a> </h3>
-
+    <br>
+    <h2><a href="{% url 'new' %}">Add new meeting</a></h2>
+    <br>
+    <h2> <a href="{% url 'rooms' %}">Room List </a> </h2>
+    <br><br>
     <a href="{% url 'about' %}">About </a>
 
 {% endblock %}

@@ -5,12 +5,12 @@
 {% block content %}
 
     <a href="{% url 'home' %}">Home</a>
-    <h2>Rooms</h2>
+    <h2>All Rooms</h2>
     <ul>
         {% for room in rooms %}
         <li>
-            <a href="{% url 'rooms' %}">
-                {{ room }}
+            <a href="{% url 'detail_room' room.id %}">
+                {{ room.name }}: Floor {{ room.floor }}, room: {{ room.room_number }}
             </a>
         </li>
         {% endfor %}

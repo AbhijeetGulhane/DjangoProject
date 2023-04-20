@@ -2,13 +2,18 @@ from django.shortcuts import render, get_object_or_404, redirect
 # from django.forms import modelform_factory
 
 from .models import Meeting, Room
-from .forms import MeetingForm
+from .forms import MeetingForm, RoomForm
 
 
 def detail(request, m_id):
     meeting = get_object_or_404(Meeting, pk=m_id)
     # meeting = Meeting.objects.get(pk=m_id)
     return render(request, "meetings/detail.html", {"meeting": meeting})
+
+
+def detail_room(request, r_id):
+    room = get_object_or_404(Room, pk=r_id)
+    return render(request, "meetings/detail_room.html", {"room": room})
 
 
 # Please add a new page that shows a list of all room objects
@@ -55,6 +60,18 @@ def edit(request, id):
     return render(request, "meetings/edit.html", {"form": form})
 
 
+def edit_room(request, id):
+    room = get_object_or_404(Room, pk=id)
+    if request.method == "POST":
+        form = RoomForm(request.POST, instance=room)
+        if form.is_valid():
+            form.save()
+            return redirect("detail_room", id)
+    else:
+        form = RoomForm(instance=room)
+    return render(request, "meetings/edit_room.html", {"form": form})
+
+
 # Delete is different: the form is only shown to ask for confirmation
 # When we get a POST, we know we can go ahead and delete
 def delete(request, id):
@@ -62,6 +79,6 @@ def delete(request, id):
     meeting = get_object_or_404(Meeting, pk=id)
     if request.method == "POST":
         meeting.delete()
-        return redirect("welcome")
+        return redirect("home")
     else:
         return render(request, "meetings/confirm_delete.html", {"meeting": meeting})
